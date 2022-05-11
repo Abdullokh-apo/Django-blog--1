@@ -1,0 +1,46 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+		<aside id="fh5co-hero" class="js-fullheight">
+			<div class="flexslider js-fullheight">
+				<ul class="slides">
+			   	<li style="background-image: url({% static 'main/images/slide_1.css' %});">
+			   		<div class="overlay-gradient"></div>
+			   		<div class="container">
+			   			<div class="col-md-8 col-md-offset-2 col-md-push-4 js-fullheight slider-text">
+			   				<div class="slider-text-inner">
+			   					<div class="desc">
+			   						<span>Finished Projects</span>
+			   						<h2>Our Work</h2>
+                                    <p class="fh5co-lead">Designed with <i class="icon-heart3"></i> by Apo</a></p>
+			   					</div>
+			   				</div>
+			   			</div>
+			   		</div>
+			   	</li>
+			  	</ul>
+		  	</div>
+		</aside>
+    <div id="form">
+        <div class="my__form">
+            <h1>Add news</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.title }}<br>
+                {{ form.anons }}<br>
+                {{ form.text }}<br>
+                <span>{{ error }}</span>
+                <button class="btn btn-primary" type="submit">Add</button>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

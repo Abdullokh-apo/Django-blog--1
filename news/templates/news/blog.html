@@ -1,0 +1,61 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+		<aside id="fh5co-hero" class="js-fullheight">
+			<div class="flexslider js-fullheight">
+				<ul class="slides">
+			   	<li
+                        style="background-image: url({% static 'main/images/slide_3.jpg' %});">
+			   		<div class="overlay-gradient"></div>
+			   		<div class="container">
+			   			<div class="col-md-8 col-md-offset-2 col-md-push-4 js-fullheight slider-text">
+			   				<div class="slider-text-inner">
+			   					<div class="desc">
+			   						<span>Read Our Blog</span>
+			   						<h2>Our Blog</h2>
+			   						<p class="fh5co-lead">Designed with <i class="icon-heart3"></i> by Apo</a></p>
+			   					</div>
+			   				</div>
+			   			</div>
+			   		</div>
+			   	</li>
+			  	</ul>
+		  	</div>
+		</aside>
+
+		<div id="fh5co-blog" class="fh5co-bg-section">
+            {% if news %}
+                    <div class="container">
+                        <div class="row">
+                            {% for el in news %}
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="fh5co-blog animate-box">
+                                                <a
+                                                        href="{% url 'news:news-detail' el.id %}#fh5co-blog" style="text-decoration: none">
+                                                    <div class="blog-text">
+                                                        <span class="posted_on">{{ el.date }}</span>
+                                                        <h3>{{ el.title }}</h3>
+                                                        <p>{{ el.anons }}</p>
+                                                        <a href="{% url 'news:news-detail' el.id %}#fh5co-blog">Подробнее...</a>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+            {% else %}
+                <p>Нет </p>
+            {% endif %}
+		</div>
+
+
+{% endblock %}
